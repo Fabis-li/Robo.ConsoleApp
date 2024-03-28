@@ -25,18 +25,83 @@
 
             #endregion
 
-            string[] posicaoInicial = new string[3];
-            string[] novasCoordenadas = [];
-            string[] areaLimite = new string[2];
+            int posicaoX = 3;
+            int posicaoY = 3;
+            char direcao = 'L';
+            int posicaoFinalX = posicaoX;
+            int posicaoFinalY = posicaoY;
+            //EMEMEMEMM
+            //MMDMMDMDDM
 
-            posicaoInicial = ["1","2","N"];
-            areaLimite = ["5", "5"];
-            novasCoordenadas = ["E","M","E","M","E","M","E","M","M"];
+            string ordem = "MMDMMDMDDM";
 
-            char norte = 'N';
-            char oeste = 'O';
-            char sul = 'S';
-            char leste = 'L';
+            for(int i = 0;i < ordem.Length; i++)
+            {
+                char ordemAtual = ordem[i];
+
+                if (ordemAtual == 'E')
+                {
+                    if(direcao == 'N')
+                    {
+                        direcao = 'O';                        
+                    }
+                    else if (direcao == 'O')
+                    {
+                        direcao = 'S';
+                    }
+                    else if (direcao == 'S')
+                    {
+                        direcao = 'L';
+                    }
+                    else
+                    {
+                        direcao = 'N';
+                    }
+                }
+                else if (ordemAtual == 'D')
+                {
+                    if (direcao == 'N')
+                    {
+                        direcao = 'L';
+                    }
+                    else if (direcao == 'L')
+                    {
+                        direcao = 'S';
+                    }
+                    else if (direcao == 'S')
+                    {
+                        direcao = 'O';
+                    }
+                    else
+                    {
+                        direcao = 'N';
+                    }
+                }
+                else if (ordemAtual == 'M')
+                {
+                    if (direcao == 'O')
+                    {
+                        posicaoFinalX -= 1;
+                    }
+                    else if (direcao == 'S')
+                    {
+                        posicaoFinalY -= 1;
+                    }
+                    else if (direcao == 'L')
+                    {
+                        posicaoFinalX += 1;
+                    }
+                    else if (direcao == 'N')
+                    {
+                        posicaoFinalY += 1;
+                    }
+
+                }
+
+            }
+
+            Console.WriteLine($"A posição final do robo é: x:{posicaoFinalX} ,y:{posicaoFinalY} e direção:{direcao}")
+            Console.ReadLine();
 
         }
     }
